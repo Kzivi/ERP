@@ -15,25 +15,17 @@ if (!$conn) {
 }
 
 // Pobieranie danych z formularza logowania
-$email = $_POST['email'];
-$password = $_POST['password'];
+$ani = $_POST['js_anpn'];
 
 // Tworzenie zapytania do bazy danych
-$sql = "SELECT permission, email FROM users WHERE email='$email' and password='$password'";
+$sql = "SELECT * FROM warehouse_stock WHERE part_number='$ani'";
 $result = mysqli_query($conn, $sql);
 
-// Sprawdzanie, czy użytkownik jest zarejestrowany
 if (mysqli_num_rows($result) > 0) {
-    // Użytkownik jest zarejestrowany, przekierowywanie do strony głównej
-    $row = mysqli_fetch_assoc($result);
-    $db_usermail = $row['email'];
-    $db_permission = $row['permission'];
-    $data = array('json_usermail' => $db_usermail, 'json_permission' => $db_permission);
+    $data = array('nif' => false);
     echo json_encode($data);
-
 } else {
-    // Użytkownik nie jest zarejestrowany, wyświetlanie komunikatu o błędzie
-    $data = array('json_permission' => "denial");
+    $data = array('nif' => true);
     echo json_encode($data);
 }
 

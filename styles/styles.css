@@ -65,7 +65,7 @@ body {
 
 .home-page .p{
   display: none;
-  font-size: 14px;
+  font-size: 12px;
   align-items: center;
 }
 
@@ -96,3 +96,5 @@ body {
 .hidden {
   display: none;
 }
+
+
