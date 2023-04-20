@@ -1,1 +1,0 @@
-sql query doesn't add new items. It's locked on id:0.

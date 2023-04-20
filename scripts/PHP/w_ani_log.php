@@ -18,16 +18,7 @@ if (!$conn) {
 $sql_ask = $_POST['sql_ask'];
 
 // Tworzenie zapytania do bazy danych
-if (mysqli_query($conn, $sql_ask)) {
-$data = array('success' => true);
-$last_inserted_id = mysqli_insert_id($conn);
-$data = array('lii' => $last_inserted_id);
-}else{
-$data = array('success' => false);
-$message_error = mysqli_error($conn);
-$data = array('message' => $message_error);
-}
-echo json_encode($data);
+mysqli_query($conn, $sql_ask);
 
 // Zamykanie połączenia z bazą danych
 mysqli_close($conn);
