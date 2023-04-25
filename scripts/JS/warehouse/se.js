@@ -14,6 +14,8 @@ function se(value) {
         document.getElementById("se_in").value = data.item_name;
         document.getElementById("se_pn").value = data.part_number;
         document.getElementById("se_sb").value =se_i_id;
+        document.getElementById("feedback").innerHTML = "";
+        document.getElementById("feedback").classList.add("hidden");
         window.scrollTo(0, 0);
     }
 });

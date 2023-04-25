@@ -11,6 +11,10 @@ var js_succes="";
 var js_em="";
 console.log(js_anpn, js_anin, js_ans, js_ansm, js_ant, js_chk_own);
 
+if(js_anin==""){
+  document.getElementById("feedback").innerHTML ="Fill the Item name!";
+  document.getElementById("feedback").classList.remove("hidden");
+}else{
 function cans() {
     document.getElementById("feedback").innerHTML =js_anin+" was add.";
     document.getElementById("feedback").classList.remove("hidden");
@@ -111,4 +115,4 @@ if(js_succes==true){
     },
   });
 }
-
+}
