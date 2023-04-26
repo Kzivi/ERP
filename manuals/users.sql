@@ -40,6 +40,18 @@ CREATE TABLE `users` (
 -- Zrzut danych tabeli `users`
 --
 
+INSERT INTO `users` (`id`, `email`, `password`, `permission`, `disabled`, `nlpchr`) VALUES
+(1, 'b.krzymowski@manufacturing.partners', 'qwerty123', 1, 0, 1),
+(2, 'd.makiej@manufacturing.partners', 'qwerty123', 2, 0, 1),
+(3, 'a.nowak@manufacturing.partners', 'qwerty123', 1, 0, 1),
+(4, 'p.ludwikowski@manufacturing.partners', 'qwerty123', 1, 0, 1),
+(5, 'm.bisha@manufacturing.partners', 'qwerty123', 1, 0, 1),
+(6, 'l.modrakowski@manufacturing.partners', 'qwerty123', 1, 0, 1),
+(7, 'w.babs@manufacturing.partners', 'qwerty123', 1, 0, 1),
+(8, 'w.pszczolinski@manufacturing.partners', 'qwerty123', 2, 0, 1),
+(9, 'j.kruszynska@manufacturing.partners', 'qwerty123', 2, 0, 1),
+(10, 'l.reszkowski@manufacturing.partners', 'qwerty123', 2, 0, 1);
+
 --
 -- Indeksy dla zrzutów tabel
 --

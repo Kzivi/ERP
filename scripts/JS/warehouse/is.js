@@ -3,6 +3,10 @@ console.log(js_isd);
 var sql_ask = "SELECT DISTINCT id, part_number, item_name, qty, status, type FROM warehouse_stock WHERE part_number LIKE '%" + js_isd + "%' OR item_name LIKE '%" + js_isd + "%' OR supplier LIKE '%" + js_isd + "%'";
 console.log(sql_ask);
 var srfb="";
+document.getElementById("feedback").classList.add("hidden");
+document.getElementById("feedback").innerHTML = "";
+document.getElementById("stock_editing").classList.add("hidden");
+document.getElementById("adding_new").classList.add("hidden");
 
 $.ajax({
     url: "scripts/php/w_si.php",
@@ -39,7 +43,7 @@ $.ajax({
                             break;
             }
 
-            srfb=srfb+"<tr><td>"+data[key].part_number+"</td><td>"+data[key].item_name+"</td><td id=iiqty"+data[key].id+">"+data[key].qty+"</td><td>"+temp_status+"</td><td>"+temp_type+"</td><td><button type='button' class='btn btn-primary btn-sm iqb' value='"+data[key].id+"'>+/-</button> <button type='button' class='btn btn-primary btn-sm ieb' value='"+data[key].id+"'>Edit</button> <button type='button' class='btn btn-primary btn-sm ivb' value='"+data[key].id+"'>View</button></td></tr>";
+            srfb=srfb+"<tr><td>"+data[key].part_number+"</td><td>"+data[key].item_name+"</td><td id=iiqty"+data[key].id+">"+data[key].qty+"</td><td>"+temp_status+"</td><td>"+temp_type+"</td><td><button type='button' class='btn btn-primary btn-sm iqb' value='"+data[key].id+"'>+/-</button> <button type='button' class='btn btn-primary btn-sm ieb' value='"+data[key].id+"' disabled='disabled'>Edit</button> <button type='button' class='btn btn-primary btn-sm ivb' value='"+data[key].id+"' disabled='disabled'>View</button></td></tr>";
         }
     },
   });

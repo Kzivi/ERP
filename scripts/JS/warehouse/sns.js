@@ -88,6 +88,17 @@ function sns(value) {
               window.scrollTo(s_position);
             console.log(s_position);
 
+//
+            var nameValue = $("#se_in").val();
+            var id_temp = document.getElementById("se_pn").value;
+            var numberValue = "*"+id_temp.replace(/ /g, "")+"*";
+            var qtyValue = js_sv;
+            var whoValue = fc_email.replace("@manufacturing.partners", "");
+            var date_temp = currentDate.toLocaleString();
+            var whenValue = date_temp;
+            var url = "lable/w_in_lable.html?name=" + encodeURIComponent(nameValue) + "&number=" + encodeURIComponent(numberValue) + "&qty=" + encodeURIComponent(qtyValue) + "&who=" + encodeURIComponent(whoValue) + "&when=" + encodeURIComponent(whenValue);
+            window.open(url);
+
         },
         error: function (xhr, status, error) {
             document.getElementById("feedback").innerHTML = "Error";
