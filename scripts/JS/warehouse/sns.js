@@ -88,7 +88,7 @@ function sns(value) {
               window.scrollTo(s_position);
             console.log(s_position);
 
-//
+//Lable Creator
             var nameValue = $("#se_in").val();
             var id_temp = document.getElementById("se_pn").value;
             var numberValue = "*"+id_temp.replace(/ /g, "")+"*";

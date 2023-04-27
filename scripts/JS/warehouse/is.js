@@ -43,7 +43,7 @@ $.ajax({
                             break;
             }
 
-            srfb=srfb+"<tr><td>"+data[key].part_number+"</td><td>"+data[key].item_name+"</td><td id=iiqty"+data[key].id+">"+data[key].qty+"</td><td>"+temp_status+"</td><td>"+temp_type+"</td><td><button type='button' class='btn btn-primary btn-sm iqb' value='"+data[key].id+"'>+/-</button> <button type='button' class='btn btn-primary btn-sm ieb' value='"+data[key].id+"' disabled='disabled'>Edit</button> <button type='button' class='btn btn-primary btn-sm ivb' value='"+data[key].id+"' disabled='disabled'>View</button></td></tr>";
+            srfb=srfb+"<tr><td>"+data[key].part_number+"</td><td>"+data[key].item_name+"</td><td id=iiqty"+data[key].id+">"+data[key].qty+"</td><td>"+temp_status+"</td><td>"+temp_type+"</td><td><button type='button' class='btn btn-primary btn-sm iqb' value='"+data[key].id+"'>+/-</button> <button type='button' class='btn btn-primary btn-sm ieb' value='"+data[key].id+"' disabled='disabled'>Edit</button> <button type='button' class='btn btn-primary btn-sm ivb' value='"+data[key].id+"'>View</button></td></tr>";
         }
     },
   });

@@ -46,6 +46,13 @@
       });
     </script>
     <script>
+$(document).on("click", ".ivb", function () {
+var value = $(this).val();
+var url = "view.html?wv_ii=" + encodeURIComponent(value);
+window.open(url);
+});
+</script>
+    <script>
       $(document).ready(function () {
         // Po załadowaniu strony, wykonaj następujące polecenia:
         $.getScript("scripts/JS/warehouse.js", function () {
