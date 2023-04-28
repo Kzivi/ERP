@@ -13,7 +13,7 @@ function iv(wv_ii) {
     var fc_email = getCookieValue("erp_usermail");
     document.getElementById("activ_user").innerHTML=fc_email;
 var wv_id = wv_ii;
-var sql_ask ="SELECT ws.id, ws.part_number AS product_number, ws.item_name, ws.qty, ws.status, ws.type, ws.stock_min, ws.supplier, (SELECT MAX(time_when) FROM warehouse_log WHERE item_id = ws.id AND operation = 2) AS last_delivery, (SELECT price FROM warehouse_log WHERE item_id = ws.id AND price IS NOT NULL AND price != 0 ORDER BY time_when DESC LIMIT 1) AS last_price, (SELECT AVG(price) FROM warehouse_log WHERE item_id = ws.id AND price IS NOT NULL AND price != 0) AS average_price FROM warehouse_stock AS ws WHERE ws.id = '"+wv_id+"';";
+var sql_ask ="SELECT ws.id, ws.part_number AS product_number, ws.location, ws.item_name, ws.qty, ws.status, ws.type, ws.stock_min, ws.supplier, (SELECT MAX(time_when) FROM warehouse_log WHERE item_id = ws.id AND operation = 2) AS last_delivery, (SELECT price FROM warehouse_log WHERE item_id = ws.id AND price IS NOT NULL AND price != 0 ORDER BY time_when DESC LIMIT 1) AS last_price, (SELECT AVG(price) FROM warehouse_log WHERE item_id = ws.id AND price IS NOT NULL AND price != 0) AS average_price FROM warehouse_stock AS ws WHERE ws.id = '"+wv_id+"';";
 console.log(sql_ask);
 var temp_s, temp_t;
 var ivfb="";
@@ -29,6 +29,7 @@ $.ajax({
         document.getElementById("wv_pn").innerHTML = data.product_number;
         document.getElementById("wv_in").innerHTML = data.item_name;
         document.getElementById("wv_qty").innerHTML = data.qty;
+        document.getElementById("wv_il").innerHTML = data.location;
         switch (data.status) {
             case "1":
                 temp_s = "Active";
@@ -40,6 +41,7 @@ $.ajax({
     temp_s = "Unknown type";
         }
         document.getElementById("wv_s").innerHTML = temp_s;
+        document.getElementById("wv_s").value = data.status;
 
         switch (data.type) {
             case "1":
@@ -58,6 +60,7 @@ $.ajax({
     temp_t = "Unknown type";
         }
         document.getElementById("wv_t").innerHTML = temp_t;
+        document.getElementById("wv_t").value = data.type;
 
         document.getElementById("wv_sm").innerHTML = data.stock_min;
         document.getElementById("wv_sup").innerHTML = data.supplier;
@@ -65,6 +68,7 @@ $.ajax({
         document.getElementById("wv_lp").innerHTML = data.last_price;
         temp_lprice = Number(data.average_price);
         document.getElementById("wv_ap").innerHTML = temp_lprice.toFixed(2);
+        document.title = data.product_number+" - "+data.item_name;
 
 
 

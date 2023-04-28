@@ -41,12 +41,34 @@
     </script>
   </head>
   <body>
-<!--Item information-->    
+<!--Message-->  
 </br>
-<p class="h5">Main information</p>
-    <div class="p-2 bg-body-tertiaryrounded-3">
-      <table class="table-striped w-auto">
-        <tbody>
+<div id="feedback" class="alert alert-danger container text-center hidden"></div>
+<div id="delete_confirm" class="alert alert-danger container text-center hidden">
+  Are you sure to delete item?
+  <button type="button" class="btn btn-primary btn-sm" id="idn">NO</button>
+  <button type="button" class="btn btn-danger btn-sm" id="idy">YES</button>
+</div>
+
+<!--Item information-->  
+<div class="p-2 bg-body-tertiaryrounded-3">
+  <table class="table-striped w-auto">
+    <tbody>
+      <tr>
+<td class="h5">Main information</td>
+<td>
+  <span><button type="button" class="btn btn-primary btn-sm" id="ieb">Edit</button></span>
+</td>
+<td class="item_editor hidden">
+  <span><button type="button" class="btn btn-primary btn-sm" id="iebs">Save</button></span>
+  <span><button type="button" class="btn btn-primary btn-sm" id="iebc">Cancel</button></span>
+</td>
+<td class="item_editor hidden">
+  <span><button type="button" class="btn btn-danger btn-sm" id="iebd">Delete</button></span>
+</td>
+</tr>
+  <td></br></td>
+</tr>
           <tr class="w">
             <td class="h6">Data Base ID:</td>
             <td id="wv_id">placeholder</td>
@@ -54,30 +76,81 @@
           <tr>
             <td class="h6">Product Number:</td>
             <td id="wv_pn">placeholder</td>
+            <td class="item_editor hidden"><input
+              type="text"
+              class="form-control form-control-dark text-bg-dark"
+              id="ie_pn"
+              placeholder="Product Number"
+            /></td>
           </tr>
           <tr>
             <td class="h6">Item Name:</td>
             <td id="wv_in">placeholder</td>
+            <td class="item_editor hidden"><input
+              type="text"
+              class="form-control form-control-dark text-bg-dark"
+              id="ie_in"
+              placeholder="Item Name"
+            /></td>
           </tr>
           <tr>
             <td class="h6">QTY:</td>
             <td id="wv_qty">placeholder</td>
           </tr>
           <tr>
+            <td class="h6">Localization:</td>
+            <td id="wv_il">placeholder</td>
+            <td class="item_editor hidden"><input
+              type="text"
+              class="form-control form-control-dark text-bg-dark"
+              id="ie_il"
+              placeholder="Localization"
+            /></td>
+          </tr>
+          <tr>
             <td class="h6">Status:</td>
             <td id="wv_s">placeholder</td>
+            <td class="item_editor hidden"><select
+              id="ie_s"
+              class="form-control form-control-dark text-bg-dark"
+            >
+              <option value="1">Active</option>
+              <option value="2">Obsolid</option>
+            </select></td>
           </tr>
           <tr>
             <td class="h6">Type:</td>
             <td id="wv_t">placeholder</td>
+            <td class="item_editor hidden"><select
+              id="ie_t"
+              class="form-control form-control-dark text-bg-dark"
+            >
+              <option value="1">Part</option>
+              <option value="2">Comsumable</option>
+              <option value="3">Module</option>
+              <option value="4">Final Product</option>
+            </select></td>
           </tr>
           <tr>
             <td class="h6">Stock min:</td>
             <td id="wv_sm">placeholder</td>
+            <td class="item_editor hidden"><input
+              type="number"
+              min="0"
+              class="form-control form-control-dark text-bg-dark"
+              id="ie_sm"
+              placeholder=""
+            /></td>
           </tr>
           <tr>
             <td class="h6">Supplier:</td>
             <td id="wv_sup">placeholder</td>
+            <td class="item_editor hidden"><input
+              type="text"
+              class="form-control form-control-dark text-bg-dark"
+              id="ie_sup"
+              placeholder="Supplier"
+            /></td>
           </tr>
           <tr>
             <td class="h6">Last Delivery:</td>
@@ -118,6 +191,34 @@
   $(document).ready(function() {
     $("#close-button").click(function() {
       window.close();
+    });
+    $('#ieb').click(function() {
+      $('.item_editor').removeClass('hidden');
+      document.getElementById("ie_pn").value = document.getElementById("wv_pn").innerHTML;
+      document.getElementById("ie_in").value = document.getElementById("wv_in").innerHTML;
+      document.getElementById("ie_il").value = document.getElementById("wv_il").innerHTML;
+      document.getElementById("ie_s").value = document.getElementById("wv_s").value;
+      document.getElementById("ie_t").value = document.getElementById("wv_t").value;
+      document.getElementById("ie_sm").value = document.getElementById("wv_sm").innerHTML;
+      document.getElementById("ie_sup").value = document.getElementById("wv_sup").innerHTML;
+      document.getElementById("ieb").disabled = true;
+
+    });
+    $('#iebc').click(function() {
+      $('.item_editor').addClass('hidden');
+      document.getElementById("ieb").disabled = false;
+    });
+    $('#idn').click(function() {
+      $('#delete_confirm').addClass('hidden');
+    });
+    $('#idy').click(function() {
+    $.getScript("scripts/JS/warehouse/id.js", function (){
+    });
+    });
+    $('#iebd').click(function() {
+      $('#delete_confirm').removeClass('hidden');
+      $('.item_editor').addClass('hidden');
+      document.getElementById("ieb").disabled = false;
     });
   });
 </script>
