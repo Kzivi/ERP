@@ -17,7 +17,7 @@ var currentDate = new Date();
 var sql_ask = "DELETE FROM warehouse_stock WHERE id = '"+wv_id+"';";
 
 $.ajax({
-    url: "scripts/php/w_id.php",
+    url: "scripts/php/w_usna.php",
     type: "POST",
     data: { sql_ask: sql_ask },
     async: false,
@@ -32,7 +32,7 @@ $.ajax({
 var sql_ask = "DELETE FROM warehouse_log WHERE item_id = '"+wv_id+"';";
 
 $.ajax({
-    url: "scripts/php/w_id.php",
+    url: "scripts/php/w_usna.php",
     type: "POST",
     data: { sql_ask: sql_ask },
     async: false,
@@ -48,7 +48,7 @@ $.ajax({
 var sql_ask = "INSERT INTO warehouse_log (item_id, operation, time_when, who, description) VALUES ('"+wv_id+"', '404', '"+currentDate.toLocaleString()+"', '"+fc_email+"', '"+wv_pn+" - "+wv_in+"');"
 
 $.ajax({
-    url: "scripts/php/w_id.php",
+    url: "scripts/php/w_usna.php",
     type: "POST",
     data: { sql_ask: sql_ask },
     async: false,

@@ -114,8 +114,8 @@
               id="ie_s"
               class="form-control form-control-dark text-bg-dark"
             >
-              <option value="1">Active</option>
-              <option value="2">Obsolid</option>
+              <option value="1">1. Active</option>
+              <option value="2">2. Obsolid</option>
             </select></td>
           </tr>
           <tr>
@@ -125,10 +125,10 @@
               id="ie_t"
               class="form-control form-control-dark text-bg-dark"
             >
-              <option value="1">Part</option>
-              <option value="2">Comsumable</option>
-              <option value="3">Module</option>
-              <option value="4">Final Product</option>
+              <option value="1">1. Part</option>
+              <option value="2">2. Comsumable</option>
+              <option value="3">3. Module</option>
+              <option value="4">4. Final Product</option>
             </select></td>
           </tr>
           <tr>
@@ -157,11 +157,11 @@
             <td id="wv_ld">placeholder</td>
           </tr>
           <tr>
-            <td class="h6">Last Price:</td>
+            <td class="h6">Last Price (€):</td>
             <td id="wv_lp">placeholder</td>
           </tr>
           <tr>
-            <td class="h6">Average Price:</td>
+            <td class="h6">Average Price (€):</td>
             <td id="wv_ap">placeholder</td>
           </tr>
         </tbody>
@@ -202,11 +202,17 @@
       document.getElementById("ie_sm").value = document.getElementById("wv_sm").innerHTML;
       document.getElementById("ie_sup").value = document.getElementById("wv_sup").innerHTML;
       document.getElementById("ieb").disabled = true;
-
+      $('#delete_confirm').addClass('hidden');
     });
     $('#iebc').click(function() {
       $('.item_editor').addClass('hidden');
       document.getElementById("ieb").disabled = false;
+      document.getElementById("feedback").innerHTML ="";
+      document.getElementById("feedback").classList.add("hidden");
+    });
+    $('#iebs').click(function() {
+      $.getScript("scripts/JS/warehouse/ie.js", function () {
+        });
     });
     $('#idn').click(function() {
       $('#delete_confirm').addClass('hidden');
@@ -219,6 +225,8 @@
       $('#delete_confirm').removeClass('hidden');
       $('.item_editor').addClass('hidden');
       document.getElementById("ieb").disabled = false;
+      document.getElementById("feedback").innerHTML ="";
+      document.getElementById("feedback").classList.add("hidden");
     });
   });
 </script>

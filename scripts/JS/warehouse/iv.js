@@ -19,7 +19,7 @@ var temp_s, temp_t;
 var ivfb="";
 
 $.ajax({
-    url: "scripts/php/w_iv.php",
+    url: "scripts/php/w_usjd.php",
     type: "POST",
     data: { sql_ask: sql_ask },
     dataType: "json",
@@ -77,9 +77,9 @@ $.ajax({
         console.log(xhr.responseText); // wyświetla treść błędu w konsoli
     
 }});
-sql_ask ="SELECT time_when, operation, qty, description, document, who FROM warehouse_log WHERE item_id='"+wv_id+"' ORDER BY time_when DESC";
+sql_ask ="SELECT DATE_FORMAT(STR_TO_DATE(time_when, '%d.%m.%Y, %H:%i:%s'), '%Y-%m-%d %H:%i:%s') AS formatted_time, time_when, operation, operation, qty, description, document, who FROM warehouse_log WHERE item_id='"+wv_id+"' ORDER BY formatted_time DESC";
 $.ajax({
-    url: "scripts/php/w_il.php",
+    url: "scripts/php/w_umjd.php",
     type: "POST",
     data: { sql_ask: sql_ask },
     dataType: "json",

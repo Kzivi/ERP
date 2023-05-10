@@ -15,12 +15,14 @@ if (!$conn) {
 }
 
 // Pobieranie danych z formularza logowania
-$sql_pre_ask = $_POST['sql_pre_ask'];
+$sql_ask = $_POST['sql_ask'];
 
 // Tworzenie zapytania do bazy danych
-$result = mysqli_query($conn, $sql_pre_ask);
-$data = mysqli_fetch_assoc($result);
-echo json_encode($data);
+$result = mysqli_query($conn, $sql_ask);
+$num_rows = mysqli_num_rows($result);
+
+// Zwracanie liczby wierszy jako JSON
+echo json_encode(array("rows" => $num_rows));
 
 // Zamykanie połączenia z bazą danych
 mysqli_close($conn);

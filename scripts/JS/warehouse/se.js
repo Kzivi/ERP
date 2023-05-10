@@ -1,10 +1,9 @@
-
 function se(value) {
  var se_i_id=value;
  var sql_ask="SELECT part_number, item_name FROM warehouse_stock WHERE id='"+se_i_id+"'";
  document.getElementById("stock_editing").classList.remove("hidden");
  $.ajax({
-    url: "scripts/php/w_seps.php",
+    url: "scripts/php/w_usjd.php",
     type: "POST",
     data: { sql_ask: sql_ask },
     dataType: "json",

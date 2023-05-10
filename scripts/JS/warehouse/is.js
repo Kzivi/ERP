@@ -9,7 +9,7 @@ document.getElementById("stock_editing").classList.add("hidden");
 document.getElementById("adding_new").classList.add("hidden");
 
 $.ajax({
-    url: "scripts/php/w_si.php",
+    url: "scripts/php/w_umjd.php",
     type: "POST",
     data: { sql_ask: sql_ask },
     dataType: "json",

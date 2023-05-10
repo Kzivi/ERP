@@ -106,7 +106,7 @@ if(js_succes==true){
   let currentDate = new Date();
   sql_ask="INSERT INTO warehouse_log (item_id, operation, time_when, who) VALUES ('"+js_lii+"', '1','"+currentDate.toLocaleString()+"','"+fc_email+"');"
   $.ajax({
-    url: "scripts/php/w_ani_log.php",
+    url: "scripts/php/w_usna.php",
     type: "POST",
     data: { sql_ask: sql_ask },
     async: false,

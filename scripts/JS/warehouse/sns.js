@@ -34,9 +34,9 @@ function sns(value) {
       sql_pre_ask = "SELECT qty FROM warehouse_stock where id='" + js_sii + "'";
       console.log(sql_pre_ask);
       $.ajax({
-        url: "scripts/php/w_ise.php",
+        url: "scripts/php/w_usjd.php",
         type: "POST",
-        data: { sql_pre_ask: sql_pre_ask },
+        data: { sql_ask: sql_pre_ask },
         dataType: "json",
         async: false,
         success: function (data) {
@@ -54,7 +54,7 @@ function sns(value) {
       sql_ask ="UPDATE warehouse_stock SET qty='"+js_snv+"' WHERE id='" + js_sii + "'";
       console.log(sql_ask);
       $.ajax({
-        url: "scripts/php/w_sd.php",
+        url: "scripts/php/w_usna.php",
         type: "POST",
         data: { sql_ask: sql_ask },
         async: false,
@@ -65,7 +65,7 @@ function sns(value) {
       console.log(sql_ask);
       document.getElementById("iiqty"+js_sii).innerHTML = js_snv;
       $.ajax({
-        url: "scripts/php/w_sd.php",
+        url: "scripts/php/w_usna.php",
         type: "POST",
         data: { sql_ask: sql_ask },
         async: false,
