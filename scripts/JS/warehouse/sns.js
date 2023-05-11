@@ -62,7 +62,6 @@ function sns(value) {
       var fc_email = getCookieValue("erp_usermail");
      let currentDate = new Date();
       sql_ask="INSERT INTO warehouse_log (item_id, operation, qty, time_when, who, document, description, price) VALUES ('"+js_sii+"', '"+js_to+"', '"+js_sv+"', '"+currentDate.toLocaleString()+"','"+fc_email+"','"+js_sdoc+"','"+js_sdis+"','"+js_sp+"');"
-      console.log(sql_ask);
       document.getElementById("iiqty"+js_sii).innerHTML = js_snv;
       $.ajax({
         url: "scripts/php/w_usna.php",
@@ -72,7 +71,6 @@ function sns(value) {
         success: function (data) {
             document.getElementById("feedback").innerHTML = "Stock Updated!";
             document.getElementById("feedback").classList.remove("hidden");
-
             document.getElementById("iso").value="";
             document.getElementById("isv").value="";
             document.getElementById("isdoc").value="";
@@ -80,15 +78,34 @@ function sns(value) {
             document.getElementById("isp").value="";
             document.getElementById("stock_editing").classList.add("hidden");
 
+            sql_ask="SELECT qty, stock_min, status FROM warehouse_stock WHERE id="+js_sii+";";
+            console.log(sql_ask);
+            $.ajax({
+              url: "scripts/php/w_umjd.php",
+              type: "POST",
+              data: { sql_ask: sql_ask },
+              dataType: "json",
+              async: false,
+              success: function (data) {
+                if ((data[0].qty<data[0].stock_min && data[0].status=="1") || data[0].qty<0){
+                  document.getElementById("iiqty"+js_sii).classList.add("bg-danger");
+                }else{
+                  document.getElementById("iiqty"+js_sii).classList.remove("bg-danger");
+                }
+                  
+              },
+            });
+
+
             var s_position = {
                 top: currentPosition,
                 left: 0,
                 behavior: 'smooth'
               };
               window.scrollTo(s_position);
-            console.log(s_position);
 
 //Lable Creator
+if(js_to=="2"){
             var nameValue = $("#se_in").val();
             var id_temp = document.getElementById("se_pn").value;
             var numberValue = "*"+id_temp.replace(/ /g, "")+"*";
@@ -98,6 +115,7 @@ function sns(value) {
             var whenValue = date_temp;
             var url = "lable/w_in_lable.html?name=" + encodeURIComponent(nameValue) + "&number=" + encodeURIComponent(numberValue) + "&qty=" + encodeURIComponent(qtyValue) + "&who=" + encodeURIComponent(whoValue) + "&when=" + encodeURIComponent(whenValue);
             window.open(url);
+}
 
         },
         error: function (xhr, status, error) {

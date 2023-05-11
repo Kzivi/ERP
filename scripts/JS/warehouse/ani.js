@@ -45,7 +45,7 @@ if(js_chk_own==true){
         sql_ask="INSERT INTO warehouse_stock (part_number, item_name, supplier, stock_min, type) VALUES ('"+js_anpn+"', '"+js_anin+"', '"+js_ans+"', '"+js_ansm+"', '"+js_ant+"');"
         console.log(sql_ask);
         $.ajax({
-            url: "scripts/php/w_ani.php",
+            url: "scripts/php/w_usjali.php",
             type: "POST",
             data: { sql_ask: sql_ask },
             dataType: "json",
@@ -71,7 +71,7 @@ if(js_chk_own==true){
     sql_ask="INSERT INTO warehouse_stock (item_name, supplier, stock_min, type) VALUES ('"+js_anin+"', '"+js_ans+"', '"+js_ansm+"', '"+js_ant+"');"
     console.log(sql_ask);
     $.ajax({
-        url: "scripts/php/w_ani.php",
+        url: "scripts/php/w_usjali.php",
         type: "POST",
         data: { sql_ask: sql_ask },
         dataType: "json",

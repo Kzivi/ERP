@@ -103,6 +103,12 @@ $.ajax({
                     case "4":
                         temp_o="Edit";
                         break;
+                    case "5":
+                        temp_o="to B-Stock";
+                        break;
+                        case "6":
+                            temp_o="from B-Stock";
+                            break;
                 default:
                     temp_o= "Unknown type";
             }

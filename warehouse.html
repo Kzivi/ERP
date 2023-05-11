@@ -19,10 +19,20 @@
       var currentPosition;
       $(document).on("click", ".iqb", function () {
         document.getElementById("adding_new").classList.add("hidden");
+        document.getElementById("move_item").classList.add("hidden");
         var value = $(this).val();
         currentPosition = window.scrollY;
         $.getScript("scripts/JS/warehouse/se.js", function () {
           se(value);
+        });
+      });
+      $(document).on("click", ".imb", function () {
+        document.getElementById("adding_new").classList.add("hidden");
+        document.getElementById("stock_editing").classList.add("hidden");
+        var value = $(this).val();
+        currentPosition = window.scrollY;
+        $.getScript("scripts/JS/warehouse/im.js", function () {
+          ims(value);
         });
       });
     </script>
@@ -30,6 +40,7 @@
       //Cancel Button Function
       $(document).on("click", ".anc", function () {
         document.getElementById("adding_new").classList.add("hidden");
+        document.getElementById("move_item").classList.add("hidden");
         document.getElementById("stock_editing").classList.add("hidden");
         document.getElementById("iso").value="";
         document.getElementById("isv").value="";
@@ -153,6 +164,7 @@ window.open(url);
                     document.getElementById("feedback").innerHTML = "";
                     document.getElementById("feedback").classList.add("hidden");
                     document.getElementById("stock_editing").classList.add("hidden");
+                    document.getElementById("move_item").classList.add("hidden");
                   });
               </script>
             </div>
@@ -342,6 +354,103 @@ window.open(url);
               placeholder="Unit Price (€)"
             />
           </div>
+        </div>
+      </div>
+    </div>
+     <!--Move Item-->
+     <div id="move_item" class="hidden">
+      <div class="container text-center">
+        <div class="row row-cols-6">
+          <div class="col">Part Number</div>
+          <div class="col">Item Name</div>
+          <div class="col"></div>
+          <div class="col"></div>
+          <div class="col"></div>
+          <div class="col-sm">
+            <button type="button" class="btn btn-primary btn-sm" id="im_cb">
+              Confirm
+            </button>
+            <script>
+              document.getElementById("im_cb").addEventListener("click", function() {
+                $.getScript("scripts/JS/warehouse/im.js", function () {
+                  im();
+                });
+              });
+            </script>
+            <button type="button" class="btn btn-primary btn-sm anc">Cancel</button>
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              class="form-control form-control-dark text-bg-dark"
+              id="im_pn"
+              disabled="disabled"
+            />
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              class="form-control form-control-dark text-bg-dark"
+              id="im_in"
+              disabled="disabled"
+            />
+          </div>
+          <div class="col"></div>
+          <div class="col"></div>
+          <div class="col"></div>
+          <div class="col"></div>
+          <div class="col">Direction</div>
+          <div class="col">Value</div>
+          <div class="col">Cause</div>
+          <div class="col">Discription</div>
+          <div class="col"></div>
+          <div class="col"></div>
+          <div class="col">
+            <script type="text/javascript">
+              function ChoiceOfCause() {
+                var t_im_c = document.getElementById("imdir").value;
+                if (t_im_c == 2) {
+                  document.getElementById("imc_v0").disabled = true;
+                  document.getElementById("imc_v1").disabled = false;
+                  document.getElementById("imc_v2").disabled = false;
+                  document.getElementById("imc").value="1";
+                } else {
+                  document.getElementById("imc_v0").disabled = false;
+                  document.getElementById("imc_v1").disabled = true;
+                  document.getElementById("imc_v2").disabled = true;
+                  document.getElementById("imc").value="0";
+                }
+              }
+            </script>
+            <select id="imdir" class="form-control form-control-dark text-bg-dark" onchange="ChoiceOfCause()">
+              <option value="1" disabled="disabled">Production</option>
+              <option value="2">B-stock</option>
+            </select>
+          </div>
+          <div class="col">
+            <input id="imv"
+              type="number"
+              min="1"
+              value="1"
+              class="form-control form-control-dark text-bg-dark"
+              placeholder="Value"
+            />
+          </div>
+          <div class="col">
+            <select id="imc" class="form-control form-control-dark text-bg-dark">
+              <option id="imc_v0" disabled value="0"> </option>
+              <option id="imc_v1" value="1">Supplier</option>
+              <option id="imc_v2" value="2">Process</option>
+            </select>
+          </div>
+          <div class="col">
+            <input id="imd"
+              type="text"
+              class="form-control form-control-dark text-bg-dark"
+              placeholder="Discription"
+            />
+          </div>
+          <div class="col"></div>
         </div>
       </div>
     </div>
