@@ -1,6 +1,6 @@
 function ims(value) {
     var m_i_id=value;
-    var sql_ask="SELECT part_number, item_name FROM warehouse_stock WHERE id='"+m_i_id+"'";
+    var sql_ask="SELECT part_number, item_name, qty FROM warehouse_stock WHERE id='"+m_i_id+"'";
     document.getElementById("move_item").classList.remove("hidden");
     document.getElementById("im_cb").value = m_i_id;
     $.ajax({
@@ -11,6 +11,8 @@ function ims(value) {
        async: false,
        success: function (data) {
            console.log(data);
+           document.getElementById("imv").value=1;
+           document.getElementById("imv").max=parseInt(data.qty);
            document.getElementById("im_in").value = data.item_name;
            document.getElementById("im_pn").value = data.part_number;
            document.getElementById("im_cb").value =m_i_id;
@@ -97,6 +99,22 @@ var js_snv;
                     behavior: 'smooth'
                   };
                   window.scrollTo(s_position);
+                  //Service lable        
+            var nameValue = document.getElementById("im_in").value;
+            var id_temp = document.getElementById("im_pn").value;
+            var numberValue = "*"+id_temp.replace(/ /g, "")+"*";
+            var qtyValue = parseInt(js_imv);
+            var whoValue = fc_email.replace("@manufacturing.partners", "");
+            var date_temp = currentDate.toLocaleString();
+            var whenValue = date_temp;
+            var discau = js_imd;
+            var temp_si = js_lii.toString();
+            temp_si = "*"+temp_si.replace(/ /g, "")+"*";
+            var url = "lable/b_stock_lable.html?name=" + encodeURIComponent(nameValue) + "&number=" + encodeURIComponent(numberValue) + "&qty=" + encodeURIComponent(qtyValue) + "&who=" + encodeURIComponent(whoValue) + "&when=" + encodeURIComponent(whenValue)  + "&dis=" + encodeURIComponent(discau)  + "&js_lii=" + encodeURIComponent(temp_si);
+            window.open(url);
+
+
+
                 },
               });
             },

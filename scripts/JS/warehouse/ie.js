@@ -80,31 +80,31 @@ if (js_ipnc===0){
 
     if(js_iopn!=js_inpn){
         sql_cur=sql_cur+"part_number='"+js_inpn+"', ";
-        log_dis=log_dis+"Part Number="+js_iopn+"->"+js_inpn+", ";
+        log_dis=log_dis+"Part Number: "+js_iopn+" > "+js_inpn+", ";
     }
     if(js_ioin!=js_inin){
         sql_cur=sql_cur+"item_name='"+js_inin+"', ";
-        log_dis=log_dis+"Item Name="+js_ioin+"->"+js_inin+", ";
+        log_dis=log_dis+"Item Name: "+js_ioin+" > "+js_inin+", ";
     }
     if(js_iol!=js_inl){
         sql_cur=sql_cur+"location='"+js_inl+"', ";
-        log_dis=log_dis+"Localization="+js_iol+"->"+js_inl+", ";
+        log_dis=log_dis+"Localization: "+js_iol+" > "+js_inl+", ";
     }
     if(js_ios!=js_ins){
         sql_cur=sql_cur+"status='"+js_ins+"', ";
-        log_dis=log_dis+"Status="+js_ios+"->"+js_ins+", ";
+        log_dis=log_dis+"Status: "+js_ios+">"+js_ins+", ";
     }
     if(js_iot!=js_int){
         sql_cur=sql_cur+"type='"+js_int+"', ";
-        log_dis=log_dis+"Type="+js_iot+"->"+js_int+", ";
+        log_dis=log_dis+"Type: "+js_iot+" > "+js_int+", ";
     }
     if(js_iosm!=js_insm){
         sql_cur=sql_cur+"stock_min='"+js_insm+"', ";
-        log_dis=log_dis+"Stock Min="+js_iosm+"->"+js_insm+", ";
+        log_dis=log_dis+"Stock Min: "+js_iosm+" > "+js_insm+", ";
     }
     if(js_iosup!=js_insup){
         sql_cur=sql_cur+"supplier='"+js_insup+"', ";
-        log_dis=log_dis+"Supplier="+js_iosup+"->"+js_insup+", ";
+        log_dis=log_dis+"Supplier: "+js_iosup+" > "+js_insup+", ";
     }
 
 

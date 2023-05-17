@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 11 Maj 2023, 08:36
+-- Czas generowania: 15 Maj 2023, 06:38
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.2.0
 
@@ -29,14 +29,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `b_log` (
   `id` int(11) NOT NULL,
+  `thread_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
   `result` int(2) NOT NULL,
   `who` varchar(50) NOT NULL,
   `time_when` varchar(20) NOT NULL,
-  `description` varchar(250) DEFAULT NULL,
-  `couse` int(2) NOT NULL
+  `description_result` varchar(250) DEFAULT NULL,
+  `cause` int(2) NOT NULL,
+  `description_cause` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Zrzut danych tabeli `b_log`
+--
 
 --
 -- Indeksy dla zrzutów tabel
@@ -56,7 +62,7 @@ ALTER TABLE `b_log`
 -- AUTO_INCREMENT dla tabeli `b_log`
 --
 ALTER TABLE `b_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

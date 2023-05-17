@@ -26,7 +26,8 @@ $.ajax({
     async: false,
     success: function (data) {
         console.log(data);
-        document.getElementById("wv_pn").innerHTML = data.product_number;
+        let temp_pn = data.product_number || "";
+        document.getElementById("wv_pn").innerHTML = temp_pn;
         document.getElementById("wv_in").innerHTML = data.item_name;
         document.getElementById("wv_qty").innerHTML = data.qty;
         document.getElementById("wv_il").innerHTML = data.location;
@@ -68,7 +69,7 @@ $.ajax({
         document.getElementById("wv_lp").innerHTML = data.last_price;
         temp_lprice = Number(data.average_price);
         document.getElementById("wv_ap").innerHTML = temp_lprice.toFixed(2);
-        document.title = data.product_number+" - "+data.item_name;
+        document.title = temp_pn+" - "+data.item_name;
 
 
 
@@ -114,8 +115,9 @@ $.ajax({
             }
             let temp_w = data[key].who;
             temp_w = temp_w.replace("@manufacturing.partners", "");
+            let temp_doc = data[key].document || "";
 
-            ivfb=ivfb+"<tr><td>"+data[key].time_when+"</td><td>"+temp_o+"</td><td>"+data[key].qty+"</td><td>"+data[key].description+"</td><td>"+data[key].document+"</td><td>"+temp_w+"</td></tr>";
+            ivfb=ivfb+"<tr><td>"+data[key].time_when+"</td><td>"+temp_o+"</td><td>"+data[key].qty+"</td><td>"+data[key].description+"</td><td>"+temp_doc+"</td><td>"+temp_w+"</td></tr>";
         }
     },        error: function (xhr, status, error) {
         console.log("Wystąpił błąd: " + error);

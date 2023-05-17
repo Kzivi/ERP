@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 11 Maj 2023, 08:36
+-- Czas generowania: 15 Maj 2023, 06:38
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.2.0
 
@@ -31,7 +31,7 @@ CREATE TABLE `b_stock` (
   `id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
-  `why` varchar(20) NOT NULL,
+  `why` int(2) NOT NULL,
   `time_when` varchar(20) NOT NULL,
   `who` varchar(50) NOT NULL,
   `description` varchar(250) DEFAULT NULL
@@ -55,7 +55,7 @@ ALTER TABLE `b_stock`
 -- AUTO_INCREMENT dla tabeli `b_stock`
 --
 ALTER TABLE `b_stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

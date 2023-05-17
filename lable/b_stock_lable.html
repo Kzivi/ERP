@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Etykieta Serwisowa</title>
+  <link
+      href="https://manufacturing.partners/images/favicon-16x16.png"
+      rel="shortcut icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    @page {
+      size: 5cm 8cm;
+      margin-top: 1mm;
+      margin-right: 1mm;
+      margin-bottom: 1mm;
+      margin-left: 1mm;
+      orientation: portrait;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .content {
+      width: 5cm;
+      height: 8cm;
+      background-color: white;
+    }
+    .logo {
+  max-width: 1.5cm;
+}
+
+.pn {
+  font-family: 'LibreBarcode39Text';
+  font-size: 23px !important; 
+}
+
+.rest{
+    font-size: 9px !important; 
+}
+
+p {
+  font-size: 7px; 
+  font-weight: bold;
+  margin-bottom: 0.1em;
+}
+span {
+  font-size: 12px !important; 
+  text-align: center;
+  padding-top: 12px;
+}
+
+@font-face {
+  font-family: 'LibreBarcode39Text';
+  src: url('font/LibreBarcode39Text-Regular.ttf') format('truetype');
+}
+
+  </style>
+  <script>
+    $(document).ready(function() {
+      var urlParams = new URLSearchParams(window.location.search);
+      var wlin = urlParams.get('name');
+      var wlpn = urlParams.get('number');
+      var wlq = urlParams.get('qty');
+      var wlu = urlParams.get('who');
+      var wld = urlParams.get('when');
+      var wsi = urlParams.get('js_lii');
+      var wdis = urlParams.get('dis');
+      $("#e_si").text(wsi);
+      $("#e_in").text(wlin);
+      $("#e_pn").text(wlpn);
+      $("#e_qty").text(wlq);
+      $("#e_dis").text(wdis);
+      $("#e_who").text(wlu);
+      $("#e_date").text(wld);
+      console.log(wsi, wlin, wlpn, wlq, wdis, wlu, wld);
+    });
+    </script>
+</head>
+<body>
+  <div class="content">
+    <p class="text-center"><img class="logo" src="img/MP_logo_kolor.svg" alt="MP_logo" /></p>
+    <p>SERVICE ID:</p>
+    <span class="pn" id="e_si">placeholder</span>
+    <p>NAME:</p>
+    <span id="e_in">placeholder</span>
+    <p>PRODUCT NUMBER:</p>
+    <span class="pn" id="e_pn">*placeholder*</span>
+    <p> QTY:</p>
+    <span id="e_qty">placeholder</span>
+    <p>DISCRIPTION:</p>
+    <span id="e_dis">placeholder</span>
+    <p>BY:</p>
+    <span class="rest" id="e_who">placeholder</span>
+    <p>DATE:</p>
+    <span class="rest" id="e_date">placeholder</span>
+  </div>
+</body>
+</html>
